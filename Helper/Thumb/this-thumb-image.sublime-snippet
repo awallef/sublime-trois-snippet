@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[echo \$this->Thumb->image( '${1:path/to/image.jpeg}', array('width' => $2}, 'cropratio' => '$3') , array('alt'=> '${4:altText}') );$10]]></content>
+	<tabTrigger>3h-thb-i</tabTrigger>
+	<description>Trois ThumbHelper image</description>
+	<scope>source.php</scope>
+</snippet>

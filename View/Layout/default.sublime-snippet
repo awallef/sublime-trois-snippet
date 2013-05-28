@@ -1,0 +1,74 @@
+<snippet>
+	<content><![CDATA[<!DOCTYPE html >
+<html>
+
+    <head>
+        <?php echo \$this->Html->charset(); ?>
+        <title>Site name: <?php echo \$title_for_layout; ?></title>
+
+        <?php
+        // METAS
+        echo \$this->element('meta/head/mobile');
+        echo \$this->element('meta/head/og');
+        echo \$this->element('meta/head/seo');
+
+        echo \$this->Html->meta('icon');
+
+        echo \$this->Html->css(array('normalize','bootstrap.min','bootstrap-responsive.min'));
+        echo \$this->Html->script(array('jquery/jquery-1.8.3.min','twitter/bootstrap.min'));
+        
+        echo \$this->fetch('meta');
+		echo \$this->fetch('css');
+		echo \$this->fetch('script');
+
+        echo \$this->element('ie/head');
+        ?>
+        
+    </head>
+
+    <body itemscope itemtype="http://schema.org/WebPage" >
+        
+        <div id="container">
+            
+            <header class="header container" >
+                <?php echo \$this->element('header'); ?>
+            </header>
+            
+            <section id="content" class="container" >
+                <?php echo \$this->Session->flash(); ?>
+                <?php echo \$this->fetch('content'); ?>
+            </section>
+            
+            <!-- ************* MICRODATA ****************** -->
+            <?php
+            // WebPage Author
+            echo \$this->element('meta/microdata/3xw', array(
+                'itemprop' => 'author'
+            ));
+
+            // WebPage Copyright Holder
+            echo \$this->element('meta/microdata/copyright', array(
+                'itemprop' => 'copyrightHolder'
+            ));
+            ?>
+            
+            <!-- ************* SQL ****************** -->
+            <div id="sql-dump" class="container">
+                <?php echo \$this->element('sql_dump'); ?>
+            </div>
+            
+            <?php echo \$this->Html->div(array('class'=>'footer-push'),' '); ?>
+        </div>
+       
+        
+        <?php echo \$this->Html->tag('footer',\$this->element('footer'),array('class'=> 'footer')); ?>
+        
+        <?php echo \$this->Js->writeBuffer(); ?>
+        
+    </body>
+</html>
+]]></content>
+	<tabTrigger>3t-lay-dft</tabTrigger>
+	<description>Trois Default Layout</description>
+	<scope>text.html</scope>
+</snippet>
